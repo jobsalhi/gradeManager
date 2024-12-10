@@ -26,6 +26,7 @@ int main() {
         }
     }
 
+    
     // Example: Add grades for a student
     if (role == "professor") {
         gradeManager.addStudent(username);
