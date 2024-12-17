@@ -6,17 +6,37 @@
 int main()
 {
     std::string dbPath = "db.json";
+    int roleOption;
+    std::cout << "Are you a (1) student or (2) professor? ";
+    std::cin >> roleOption;
+
     std::string role;
-    std::cout << "Are you a student or a professor? ";
-    std::cin >> role;
+    if (roleOption == 1) {
+        role = "student";
+    } else if (roleOption == 2) {
+        role = "professor";
+    } else {
+        std::cout << "Invalid option.\n";
+        return 0;
+    }
 
     if (role == "student")
     {
         Student student(dbPath);
         std::string username, password;
-        std::cout << "Do you want to sign up or login? (signup/login): ";
+        int actionOption;
+        std::cout << "Do you want to (1) sign up or (2) login? ";
+        std::cin >> actionOption;
+
         std::string action;
-        std::cin >> action;
+        if (actionOption == 1) {
+            action = "signup";
+        } else if (actionOption == 2) {
+            action = "login";
+        } else {
+            std::cout << "Invalid option.\n";
+            return 0;
+        }
 
         int userId = -1;
         if (action == "signup")
@@ -54,14 +74,21 @@ int main()
                 if (option == 1)
                 {
                     auto grades = student.getGrades(userId);
-                    std::cout << "Your grades:\n";
-                    for (const auto &[subject, grade] : grades)
+
+                    if (grades.empty())
                     {
-                        std::cout << subject << ": " << grade << "\n";
+                        std::cout << "You have no grades.\n";
+                    }
+                    else
+                    {
+                        std::cout << "Your grades:\n";
+                        for (const auto &[subject, grade] : grades)
+                        {
+                            std::cout << subject << ": " << grade << "\n";
+                        }
                     }
                 }
-                else if (option == 2)
-                {
+                else if (option == 2){
                     std::cout << "Your average grade: " << student.calculateAverage(userId) << "\n";
                 }
                 else if (option == 3)
@@ -79,9 +106,19 @@ int main()
     {
         Professor professor(dbPath);
         std::string username, password;
-        std::cout << "Do you want to sign up or login? (signup/login): ";
+        int actionOption;
+        std::cout << "Do you want to (1) sign up or (2) login? ";
+        std::cin >> actionOption;
+
         std::string action;
-        std::cin >> action;
+        if (actionOption == 1) {
+            action = "signup";
+        } else if (actionOption == 2) {
+            action = "login";
+        } else {
+            std::cout << "Invalid option.\n";
+            return 0;
+        }
 
         int userId = -1;
         if (action == "signup")
@@ -110,10 +147,10 @@ int main()
 
         if (userId != -1)
         {
-                int option;
             while (true)
             {
-                std::cout << "Choose an option: (1) Add a grade (2) Modify a grade (3) Display students and grades (4) Quit: ";
+                int option;
+                std::cout << "Choose an option: (1) Add a grade (2) Modify a grade (3) Display students and grades (4) Delete a student (5) Quit: ";
                 std::cin >> option;
 
                 if (option == 1)
@@ -139,21 +176,23 @@ int main()
                     int grade;
 
                     std::cout << "Enter the name of the subject: ";
-
                     std::cin >> subject;
-
                     std::cout << "Enter the new grade: ";
-
                     std::cin >> grade;
-
                     professor.modifyGrade(studentId, subject, grade);
                 }
-
                 else if (option == 3)
                 {
                     professor.displayStudents();
                 }
                 else if (option == 4)
+                {
+                    int studentId;
+                    std::cout << "Enter student ID to delete: ";
+                    std::cin >> studentId;
+                    professor.deleteStudent(studentId);
+                }
+                else if (option == 5)
                 {
                     break;
                 }

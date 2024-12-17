@@ -29,24 +29,15 @@
             "username": "JohnDoe"
         },
         {
-            "grades": {
-                "History": 10,
-                "Math": 72,
-                "Science": 88
-            },
+            "grades": null,
             "id": 2,
-            "password": "5678",
-            "username": "JaneSmith"
+            "password": "a",
+            "username": "wassem"
         },
         {
             "id": 3,
-            "password": "Doe",
-            "username": "John"
-        },
-        {
-            "grades": null,
-            "password": "sal",
-            "username": "job"
+            "password": "A",
+            "username": "JOB"
         }
     ]
 }
