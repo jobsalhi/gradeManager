@@ -1,19 +1,10 @@
-#ifndef STUDENT_HPP
-#define STUDENT_HPP
-
-#include <string>
+#pragma once
+#include "User.hpp"
 #include <vector>
 
-class Student {
-private:
-    std::string name;
-    std::vector<int> grades;
-
+class Student : public User {
 public:
-    Student(const std::string& name);
-    // void addGrade(int grade);
-    double calculateAverage() const;
-    const std::vector<int>& getGrades() const;
+    Student(const std::string& dbPath);
+    std::vector<int> getGrades(int studentId) const;
+    double calculateAverage(int studentId) const;
 };
-
-#endif // STUDENT_HPP

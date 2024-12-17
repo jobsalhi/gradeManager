@@ -1,18 +1,39 @@
 {
     "professors": [
         {
-            "password": "securepass",
-            "username": "DrSmith"
+            "password": "abcd",
+            "username": "Dr.Brown"
+        },
+        {
+            "password": "efgh",
+            "username": "Dr.White"
         }
     ],
     "students": [
         {
-            "password": "pass123",
-            "username": "Alice"
+            "id": 1,
+            "grades": {
+                "History": 78,
+                "Math": 85,
+                "Science": 90
+            },
+            "password": "1234",
+            "username": "JohnDoe"
         },
         {
-            "password": "123123",
-            "username": "ayoub"
+            "id": 2,
+            "grades": {
+                "History": 95,
+                "Math": 72,
+                "Science": 88
+            },
+            "password": "5678",
+            "username": "JaneSmith"
+        },
+        {
+            "id": 3,
+            "password": "Doe",
+            "username": "John"
         }
     ]
 }

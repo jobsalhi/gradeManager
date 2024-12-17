@@ -1,19 +1,17 @@
-#ifndef GRADEMANAGER_HPP
-#define GRADEMANAGER_HPP
-
-#include <string>
+#pragma once
+#include <unordered_map>
 #include <vector>
-#include <map>
+#include <string>
 
 class GradeManager {
-private:
-    std::map<std::string, std::vector<int>> studentGrades; // Map of student names to grades
-
 public:
-    void addStudent(const std::string& name);
-    void addGrade(const std::string& name, int grade);
-    std::vector<int> getGrades(const std::string& name) const;
-    double calculateAverage(const std::string& name) const;
-};
+    void setGradesData(const std::unordered_map<int, std::vector<int>>& data);
+    void addStudent(int id, const std::string& name);
+    void addGrade(int id, int grade);
+    std::vector<int> getGrades(int id) const;
+    double calculateAverage(int id) const;
 
-#endif // GRADEMANAGER_HPP
+private:
+    std::unordered_map<int, std::vector<int>> gradesData;
+    std::unordered_map<int, std::string> studentNames;
+};

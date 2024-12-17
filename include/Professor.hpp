@@ -1,15 +1,9 @@
-#ifndef PROFESSOR_HPP
-#define PROFESSOR_HPP
+#pragma once
+#include "Student.hpp"
 
-#include <string>
-
-class Professor {
-private:
-    std::string name;
-
+class Professor : public Student {
 public:
-    Professor(const std::string& name);
-    const std::string& getName() const;
+    Professor(const std::string& dbPath);
+    void addStudent(int studentId, const std::string& studentName);
+    void modifyGrades(int studentId, const std::vector<int>& grades);
 };
-
-#endif // PROFESSOR_HPP
