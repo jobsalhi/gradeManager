@@ -30,7 +30,8 @@ bool User::signIn(const std::string& username, const std::string& password, cons
                 return false;
             }
         }
-        usersData["students"].push_back({{"username", username}, {"password", password}, {"grades", {}}});
+        int newId = usersData["students"].size() + 1;
+        usersData["students"].push_back({{"id", newId}, {"username", username}, {"password", password}, {"grades", {}}});
     } else if (role == "professor") {
         for (const auto& professor : usersData["professors"]) {
             if (professor["username"] == username) {
@@ -38,7 +39,8 @@ bool User::signIn(const std::string& username, const std::string& password, cons
                 return false;
             }
         }
-        usersData["professors"].push_back({{"username", username}, {"password", password}});
+        int newId = usersData["professors"].size() + 1;
+        usersData["professors"].push_back({{"id", newId}, {"username", username}, {"password", password}});
     }
     saveUsers();
     return true;

@@ -1,32 +1,40 @@
 {
     "professors": [
         {
+            "id": 1,
             "password": "abcd",
             "username": "Dr.Brown"
         },
         {
+            "id": 2,
             "password": "efgh",
             "username": "Dr.White"
+        },
+        {
+            "id": 3,
+            "password": "s",
+            "username": "job"
         }
     ],
     "students": [
         {
-            "id": 1,
             "grades": {
+                "Biology": 10,
                 "History": 78,
                 "Math": 85,
                 "Science": 90
             },
+            "id": 1,
             "password": "1234",
             "username": "JohnDoe"
         },
         {
-            "id": 2,
             "grades": {
-                "History": 95,
+                "History": 10,
                 "Math": 72,
                 "Science": 88
             },
+            "id": 2,
             "password": "5678",
             "username": "JaneSmith"
         },
@@ -34,6 +42,11 @@
             "id": 3,
             "password": "Doe",
             "username": "John"
+        },
+        {
+            "grades": null,
+            "password": "sal",
+            "username": "job"
         }
     ]
 }

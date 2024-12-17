@@ -1,9 +1,11 @@
 #pragma once
 #include "Student.hpp"
+#include <unordered_map>
 
 class Professor : public Student {
 public:
     Professor(const std::string& dbPath);
-    void addStudent(int studentId, const std::string& studentName);
-    void modifyGrades(int studentId, const std::vector<int>& grades);
+    void modifyGrade(int studentId, const std::string &subject, int grade);
+    void addGrade(int studentId, const std::string& subject, int grade);
+    void displayStudents() ; // Update return type
 };

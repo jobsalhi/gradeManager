@@ -3,7 +3,7 @@
 #include <numeric>
 
 // Set grades data
-void GradeManager::setGradesData(const std::unordered_map<int, std::vector<int>>& data) {
+void GradeManager::setGradesData(const std::unordered_map<int, std::unordered_map<std::string, int>>& data) {
     gradesData = data;
 }
 
@@ -18,16 +18,16 @@ void GradeManager::addStudent(int id, const std::string& name) {
 }
 
 // Add a grade for a student
-void GradeManager::addGrade(int id, int grade) {
+void GradeManager::addGrade(int id, const std::string& subject, int grade) {
     if (gradesData.find(id) != gradesData.end()) {
-        gradesData[id].push_back(grade);
+        gradesData[id][subject] = grade;
     } else {
         std::cout << "Student not found.\n";
     }
 }
 
 // Get grades of a student
-std::vector<int> GradeManager::getGrades(int id) const {
+std::unordered_map<std::string, int> GradeManager::getGrades(int id) const {
     auto it = gradesData.find(id);
     if (it != gradesData.end()) {
         return it->second;
@@ -40,7 +40,11 @@ std::vector<int> GradeManager::getGrades(int id) const {
 double GradeManager::calculateAverage(int id) const {
     auto it = gradesData.find(id);
     if (it != gradesData.end() && !it->second.empty()) {
-        return static_cast<double>(std::accumulate(it->second.begin(), it->second.end(), 0)) / it->second.size();
+        int sum = 0;
+        for (const auto& grade : it->second) {
+            sum += grade.second;
+        }
+        return static_cast<double>(sum) / it->second.size();
     } else {
         return 0.0;
     }
